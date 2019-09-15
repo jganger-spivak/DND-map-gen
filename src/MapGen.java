@@ -14,7 +14,7 @@ public class MapGen {
         f.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setLocationRelativeTo(null)
+        f.setLocationRelativeTo(null);
         f.add(new Display());
         f.setVisible(true);
 

@@ -5,7 +5,7 @@ public class Display extends JPanel {
 
     public Display(){
         setLayout(null);
-        repaint;
+        repaint();
     }
 
     public void paintComponent(Graphics g){
