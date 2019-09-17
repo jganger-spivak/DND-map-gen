@@ -5,18 +5,20 @@ import java.awt.event.ActionListener;
 
 public class Display extends JPanel {
 
+    //size of white cube
     private int width;
     private int height;
     private int xPos;
     private int yPos;
 
+    //setting up display, adding cube, adding buttons
     public Display(){
         setLayout(null);
         repaint();
         width = 25;
         height = 25;
         xPos = 0;
-        yPos = 300;
+        yPos = 0;
         JButton upButton = new JButton("^");
         upButton.addActionListener(new ActionListener() {
             @Override
@@ -59,12 +61,14 @@ public class Display extends JPanel {
         add(leftButton);
     }
 
+
     public void paintComponent(Graphics g){
 
         super.paintComponent(g);
         setBackground(Color.BLACK);
         g.setColor(Color.WHITE);
         g.fillRect(xPos, yPos, width, height);
+        RBlock r = new RBlock()
 
     }
 
