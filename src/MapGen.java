@@ -1,5 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.util.ArrayList;
+import javax.imageio.ImageIO;
 
 public class MapGen {
 
@@ -18,10 +22,14 @@ public class MapGen {
         f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLocationRelativeTo(null);
+        Image floorTex = ImageIO.read(new File("floor.png"));
+        Rooms testRoom = new Rooms(0, 0, 2, 2, floorTex);
 
         //where graphics is placed
         f.add(new Display());
         f.setVisible(true);
+
+
 
 
 

@@ -11,6 +11,9 @@ public class Display extends JPanel {
     private int xPos;
     private int yPos;
 
+
+
+
     //setting up display, adding cube, adding buttons
     public Display(){
         setLayout(null);
@@ -68,7 +71,6 @@ public class Display extends JPanel {
         setBackground(Color.BLACK);
         g.setColor(Color.WHITE);
         g.fillRect(xPos, yPos, width, height);
-        RBlock r = new RBlock()
 
     }
 
