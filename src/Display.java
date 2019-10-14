@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
 public class Display extends JPanel {
 
     //size of white cube
@@ -10,14 +10,24 @@ public class Display extends JPanel {
     private int height;
     private int xPos;
     private int yPos;
+    private ArrayList<Rooms> rooms;
+    private ArrayList<Coord> halls;
+    private ArrayList<boolean> isVertical;
+    private Image horizTex;
+    private Image vertTex;
+    private SimpleRoom[] littlerooms;
 
 
 
 
     //setting up display, adding cube, adding buttons
-    public Display(){
+    public Display(ArrayList<Rooms> roomList, ArrayList<Coord> hallList, ArrayList<boolean> verts, Image horizTex, Image vertTex){
         setLayout(null);
         repaint();
+        rooms = roomList;
+        halls = hallList;
+        isVertical = verts;
+        //littlerooms = smallRoomList;
         width = 25;
         height = 25;
         xPos = 0;
@@ -26,42 +36,42 @@ public class Display extends JPanel {
         upButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                yPos = yPos - 50;
+                //room.y -= 50;
                 repaint();
             }
         });
         upButton.setBounds(400, 100, 50, 50);
-        add(upButton);
+        //add(upButton);
         JButton downButton = new JButton("v");
         downButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                yPos = yPos + 50;
+                //room.y += 50;
                 repaint();
             }
         });
         downButton.setBounds(400, 200, 50, 50);
-        add(downButton);
+        //add(downButton);
         JButton rightButton = new JButton(">");
         rightButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                xPos = xPos + 50;
+                //room.x += 50;
                 repaint();
             }
         });
         rightButton.setBounds(450, 150, 50, 50);
-        add(rightButton);
+        //add(rightButton);
         JButton leftButton = new JButton("<");
         leftButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                xPos = xPos - 50;
+                //room.x -= 50;
                 repaint();
             }
         });
         leftButton.setBounds(350, 150, 50, 50);
-        add(leftButton);
+        //add(leftButton);
     }
 
 
@@ -70,7 +80,21 @@ public class Display extends JPanel {
         super.paintComponent(g);
         setBackground(Color.BLACK);
         g.setColor(Color.WHITE);
-        g.fillRect(xPos, yPos, width, height);
+        for (int i = 0; i < this.rooms.size(); i++) {
+          g.drawImage(rooms.get(i).texture, rooms.get(i).x, rooms.get(i).y, null);
+          g.drawRect(rooms.get(i).x, rooms.get(i).y, rooms.get(i).width*20, rooms.get(i).height*20);
+          //g.drawString(Integer.toString(i), rooms.get(i).x, rooms.get(i).y);
+        }
+        for (int i = 0; i < this.halls.size(); i++) {
+          if (this.isVertical.get(i)) {
+            g.drawImage(this.halls.get(i).x, this.halls.get(i).y, this.vertTex, null);
+          } else {
+            g.drawImage(this.halls.get(i).x, this.halls.get(i).y, this.horizTex, null);
+          }
+        }
+        
+        
+        //g.fillRect(xPos, yPos, width, height);
 
     }
 
